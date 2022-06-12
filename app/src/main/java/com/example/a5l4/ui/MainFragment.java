@@ -21,7 +21,9 @@ import com.example.a5l4.R;
 import com.example.a5l4.databinding.FragmentMainBinding;
 import com.example.a5l4.viewModel.MainViewModel;
 
+import dagger.hilt.android.AndroidEntryPoint;
 
+@AndroidEntryPoint
 public class MainFragment extends Fragment {
     FragmentMainBinding binding;
     NavController navController;

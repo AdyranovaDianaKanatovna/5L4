@@ -2,4 +2,7 @@
     <string name="app_name">5L4</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="main_text">Find out who is your soulmate </string>
+    <string name="first_board_page"> this what need you</string>
+    <string name="second_board_page">you to cherish love</string>
+    <string name="third_board_page">Maybe someone is waiting for you! </string>
 </resources>

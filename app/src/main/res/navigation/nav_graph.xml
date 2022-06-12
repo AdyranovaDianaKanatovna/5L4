@@ -16,6 +16,16 @@
         android:name="com.example.a5l4.ui.SecondFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_second" />
+    <fragment
+        android:id="@+id/boardFragment3"
+        android:name="com.example.a5l4.ui.BoardFragment"
+        android:label="fragment_board"
+        tools:layout="@layout/fragment_board" />
+    <fragment
+        android:id="@+id/startFragment3"
+        android:name="com.example.a5l4.ui.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" />
 
 
 </navigation>
