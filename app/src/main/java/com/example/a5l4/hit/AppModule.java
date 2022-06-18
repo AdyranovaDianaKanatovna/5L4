@@ -19,8 +19,7 @@ public class AppModule {
     @Provides
     @Singleton
     public LoveApi provideApi() {
-        return new Retrofit.Builder()
-                .baseUrl("https://love-calculator.p.rapidapi.com")
+        return new Retrofit.Builder().baseUrl("https://love-calculator.p.rapidapi.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build().create(LoveApi.class);
     }
@@ -29,9 +28,9 @@ public class AppModule {
     public Repository provideRepository() {
         return new Repository(provideApi());
     }
-
     @Provides
-    public Prefs getProvidePrefs() {
-        return new Prefs();
+    @Singleton
+    public Prefs providePrefs(){
+        return  new Prefs();
     }
 }

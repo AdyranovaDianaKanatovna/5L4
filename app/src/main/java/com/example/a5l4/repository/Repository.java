@@ -15,28 +15,29 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Repository {
-    private final String HOST = "love-calculator.p.rapidapi.com";
+    private  final  String HOST = "love-calculator.p.rapidapi.com";
     public static final String KEY = "7f31bf3e6fmshc9fe327e036f21dp1d7268jsnc447467dd4ff";
-    LoveApi api;
+    LoveApi loveApi;
     @Inject
-    public Repository(LoveApi loveApi){
-        api = loveApi;
+    public Repository(LoveApi loveApi1) {
+        loveApi = loveApi1;
     }
 
-    public MutableLiveData<LoveModel> getData(String first, String second) {
-        MutableLiveData<LoveModel> localMutableLiveData = new MutableLiveData<>();
-        api.loveCalculate(first, second, HOST, KEY).enqueue(new Callback<LoveModel>() {
+    public MutableLiveData<LoveModel>getData(String first, String second){
+        MutableLiveData<LoveModel>localMutableLiveData = new MutableLiveData<>();
+        loveApi.loveCalculate(first,second,HOST,KEY).enqueue(new Callback<LoveModel>() {
             @Override
             public void onResponse(Call<LoveModel> call, Response<LoveModel> response) {
-                if (response.isSuccessful()) {
+                if (response.isSuccessful()){
                     localMutableLiveData.postValue(response.body());
+
+
                 }
             }
 
             @Override
             public void onFailure(Call<LoveModel> call, Throwable t) {
-                Log.e("ololo", "onFailure:" + t.getLocalizedMessage());
-
+                Log.e("ololo", "onFailure:"+ t.getMessage());
             }
         });
         return localMutableLiveData;

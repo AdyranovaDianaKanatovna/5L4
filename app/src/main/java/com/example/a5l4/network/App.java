@@ -6,6 +6,8 @@ import dagger.hilt.android.HiltAndroidApp;
 import retrofit2.Retrofit;
 @HiltAndroidApp
 public class App extends Application {
+
+}
 //    public static  LoveApi api;
 
 //    @Override
@@ -14,4 +16,3 @@ public class App extends Application {
 //        RetrofitService retrofitService = new RetrofitService();
 //        api = retrofitService.getLoveApi();
 //    }
-}

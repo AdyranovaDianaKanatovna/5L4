@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class LoveModel implements Serializable {
+public class LoveModel  {
     @SerializedName("fname")
     public String firstName;
     @SerializedName("sname")

@@ -2,8 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/mainFragment"
-    android:id="@+id/nav_graph.xml">
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/mainFragment">
 
 
     <fragment
@@ -17,15 +17,13 @@
         android:label="fragment_second"
         tools:layout="@layout/fragment_second" />
     <fragment
-        android:id="@+id/boardFragment3"
+        android:id="@+id/boardFragment"
         android:name="com.example.a5l4.ui.BoardFragment"
         android:label="fragment_board"
         tools:layout="@layout/fragment_board" />
-    <fragment
-        android:id="@+id/startFragment3"
-        android:name="com.example.a5l4.ui.StartFragment"
-        android:label="fragment_start"
-        tools:layout="@layout/fragment_start" />
+    <action
+        android:id="@+id/action_boardFragment_to_mainFragment"
+        app:destination="@+id/mainFragment" />
 
 
 </navigation>

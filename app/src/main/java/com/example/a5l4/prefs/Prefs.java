@@ -5,18 +5,14 @@ import android.content.SharedPreferences;
 
 public class Prefs {
     private SharedPreferences preferences;
-
-
-    public void save(Context context) {
-        preferences = context.getSharedPreferences("settings", Context.MODE_PRIVATE);
-
+    public void saveBoardState(){
+        preferences.edit().putBoolean("isBoardShown",true).apply();
+    }
+    public boolean isBoardShown(){
+        return preferences.getBoolean("isBoardShown",false);
+    }
+    public void setCon(Context context){
+        preferences = context.getSharedPreferences("settings",Context.MODE_PRIVATE);
     }
 
-    public void saveState() {
-        preferences.edit().putBoolean("isShown", true).apply();
-    }
-
-    public boolean isShown() {
-        return preferences.getBoolean("isShown", false);
-    }
 }

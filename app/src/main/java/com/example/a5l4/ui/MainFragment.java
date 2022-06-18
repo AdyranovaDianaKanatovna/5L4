@@ -33,45 +33,43 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentMainBinding.inflate(inflater,container,false);
+        // Inflate the layout for this fragment
+        binding = FragmentMainBinding.inflate(getLayoutInflater());
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-       //navController = Navigation.findNavController(requireActivity(),R.id.nav_host_fragment);
         initClickers();
+        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
+        navController = NavHostFragment.findNavController(this);
     }
 
     private void initClickers() {
         binding.btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 getDataFromLoveApi();
-                binding.progressBar.setVisibility(View.VISIBLE);
             }
-
         });
-
     }
     private void getDataFromLoveApi() {
-        NavController navController = Navigation.findNavController(requireActivity(),R.id.nav_host_fragment);
         String firstName = binding.EditOne.getText().toString();
         String secondName = binding.EditTwo.getText().toString();
         viewModel.getLoveModelLiveData(firstName, secondName).observe(this, model -> {
-            Log.e("ololo","getDataFromLoveApi" + model.result);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("key", model);
-            navController.navigate(R.id.secondFragment,bundle);
-            binding.progressBar.setVisibility(View.INVISIBLE);
-
-//            bundle.putString("2", model.firstName);
-//            bundle.putString("3", model.secondName);
-//            bundle.putString("4", model.result);
-//            navController.navigate(R.id.secondFragment,bundle);
+            binding.btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("1", model.percentage);
+                    bundle.putString("2", model.firstName);
+                    bundle.putString("3", model.secondName);
+                    bundle.putString("4", model.result);
+                    Log.e("ololo", "OnResponse " + model.percentage);
+                    navController.navigate(R.id.secondFragment, bundle);
+                }
+            });
         });
     }
 }
